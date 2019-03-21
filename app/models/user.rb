@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   include UserAdmin
+  
+  validates :email, :password, :password_confirmation, :presence => true
+
 end
