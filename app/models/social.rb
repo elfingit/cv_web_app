@@ -2,6 +2,8 @@ class Social < ApplicationRecord
   has_one_attached :icon
 
   validate :icon_validation
+  validates :title, :url, :icon, :presence => true
+  validates :url, :format => { :with => URI::regexp(%w(http https)) }
 
   def icon_validation
     if icon.attached?
