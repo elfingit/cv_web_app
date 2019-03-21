@@ -1,0 +1,93 @@
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+.bg-light {
+  background-color: #fff !important;
+}
+
+.navbar-light .navbar-nav .show > .nav-link,
+.navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .nav-link.active {
+  color: #D84339;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  font-weight: bold;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #D84339;
+}
+
+.navbar-brand {
+  margin-right: 14rem;
+}
+
+div.socials-btn {
+  .navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+
+    img {
+      width: 2.5rem;
+    }
+  }
+}
+
+.full-relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.technology-container {
+  list-style: none;
+
+  img {
+    height: 56px;
+  }
+
+  li.technology-item {
+    width: 45%;
+    margin: .5rem;
+    height: 4rem;
+
+    span.title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      font-size: .5rem;
+    }
+
+    span.hours {
+      display: inline-block;
+      background-color: #05b711;
+      padding-left: .7rem;
+    }
+
+  }
+
+  span {
+    color: #fff;
+    font-size: .7rem;
+    padding: 0.2rem;
+    background-color: #D84339;
+    border-radius: .5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+      max-width: 1440px;
+    }
+}

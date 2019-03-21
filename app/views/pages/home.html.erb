@@ -1,0 +1,21 @@
+<div class="col-lg-12">
+  <ul class="technology-container">
+    <% @technologies.each do | technology | %>
+    <li class="technology-item">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="full-relative">
+            <img src="<%= technology.icon_url %>">
+            <span class="title"><%= technology.title %></span>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <span class="hours" style="width:<%= progress_bar_width base: @max_hours, current: technology.hours.to_f %>%">
+            <%= number_with_delimiter technology.hours %> (h)
+          </span>
+        </div>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+</div>
