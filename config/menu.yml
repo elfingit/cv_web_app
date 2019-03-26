@@ -1,0 +1,14 @@
+menu:
+  items:
+    - {
+      "label": "Portfolio",
+      "link": "#"
+    }
+    - {
+      "label": "About Me",
+      "link": ":show_page_path about-me"
+    }
+    - {
+      "label": "Contact Me",
+      "link": "#"
+    }
