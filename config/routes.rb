@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+  get 'page/:id', to: 'pages#show', as: 'show_page'
+
 end

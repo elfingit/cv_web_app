@@ -20,15 +20,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Portfolio</a>
+            <% @menu.items do |menu_item| %>
+            <li class="nav-item <%= 'active' if current_page?(menu_item.url) %>">
+              <a class="nav-link" href="<%= menu_item.url %>"><%= menu_item.label %></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About Me</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact Me</a>
-            </li>
+            <% end %>
           </ul>
           <div class="col-sm-3 socials-btn">
               <ul class="navbar-nav">
