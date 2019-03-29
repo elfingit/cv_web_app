@@ -10,5 +10,5 @@ menu:
     }
     - {
       "label": "Contact Me",
-      "link": "#"
+      "link": ":show_page_path contact-me"
     }
