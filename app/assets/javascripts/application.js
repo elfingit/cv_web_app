@@ -17,4 +17,3 @@
 
 //= require jquery3
 //= require bootstrap
-//= require vue
