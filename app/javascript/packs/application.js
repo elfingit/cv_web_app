@@ -15,4 +15,13 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+import Vue from 'vue/dist/vue.esm'
+import ContactForm from './component/contact_form.vue'
+
+Vue.component('contact_form', ContactForm);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const app = new Vue({
+    el: '#dev-vue-app'
+  })
+})
