@@ -4,16 +4,16 @@
       <form method="post" action="#" v-on:submit="sendForm">
         <div class="form-group">
           <label>Please provide your email <span class="red">*</span></label>
-          <input type="email" name="email" class="form-control" placeholder="example@example.com" requried>
+          <input type="email" name="email" v-model="entity.email" v-on:focus="onFocus" class="form-control" placeholder="example@example.com">
           <small class="form-text text-muted">It's need for back contact with you, so I'll never share your email with anyone else</small>
         </div>
         <div class="form-group">
           <label>Please provide your name </label>
-          <input type="text" name="name" class="form-control" placeholder="Jhon Smith">
+          <input type="text" v-model="entity.name" name="name" class="form-control" placeholder="Jhon Smith">
         </div>
         <div class="form-group">
           <label>Message <span class="red">*</span></label>
-          <textarea name="message" class="form-control" rows="3"></textarea>
+          <textarea v-on:focus="onFocus" v-model="entity.message" name="message" class="form-control" rows="3"></textarea>
         </div>
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Send</button>
@@ -27,30 +27,46 @@
 export default {
   name: 'contact_form',
 
+  data: function () {
+    return {
+      entity: {
+        email: '',
+        name: '',
+        message: ''
+      }
+    }
+  },
+
   methods: {
     sendForm: function (event) {
       event.preventDefault()
-
-      const defaultInputBorderColor = '#ced4da';
-
       let form = event.target
-      let emailField = form.querySelector('input[name="email"]')
+      let email = this.entity.email.trim()
 
-      let emailValue = emailField.value.trim()
-
-      if (!emailValue) {
+      if (!email) {
+        let emailField = form.querySelector('input[name="email"]')
         emailField.style.borderColor = '#FF0000';
         return;
       }
 
-      let messageField = form.querySelector('textarea[name="message"]')
-      let messageValue = messageField.value.trim()
+      let message = this.entity.message.trim()
 
-      if (!messageValue) {
+      if (!message) {
+        let messageField = form.querySelector('textarea[name="message"]')
         messageField.style.borderColor = '#FF0000';
         return;
       }
 
+      const postData = JSON.stringify(this.entity)
+      console.dir(this.$http)
+
+    },
+
+    onFocus: function (event) {
+
+      const defaultInputBorderColor = '#ced4da';
+
+      event.target.style.borderColor = defaultInputBorderColor;
     }
   }
 
