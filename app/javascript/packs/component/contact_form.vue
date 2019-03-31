@@ -24,6 +24,9 @@
 </template>
 
 <script>
+
+import axios from 'axios';
+
 export default {
   name: 'contact_form',
 
@@ -35,6 +38,13 @@ export default {
         message: ''
       }
     }
+  },
+  mounted() {
+    const tokenDom = document.querySelector("meta[name=csrf-token]")
+    if (tokenDom) {
+      const csrfToken = tokenDom.content
+      axios.defaults.headers.common['X-CSRF-Token'] = csrfToken
+   }
   },
 
   methods: {
@@ -57,8 +67,12 @@ export default {
         return;
       }
 
-      const postData = JSON.stringify(this.entity)
-      console.dir(this.$http)
+      axios.post('/message.json', { 'message': this.entity })
+        .then( response => {
+          console.dir(response)
+        }).catch( err => {
+          console.dir(err)
+        })
 
     },
 
