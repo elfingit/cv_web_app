@@ -25,7 +25,9 @@
 
 <script>
 
+import Vue from 'vue'
 import axios from 'axios';
+import Alert from './alert.vue'
 
 export default {
   name: 'contact_form',
@@ -36,7 +38,8 @@ export default {
         email: '',
         name: '',
         message: ''
-      }
+      },
+      error_container: null
     }
   },
   mounted() {
@@ -50,6 +53,12 @@ export default {
   methods: {
     sendForm: function (event) {
       event.preventDefault()
+
+      if (this.error_container) {
+        this.error_container.remove()
+        this.error_container = null
+      }
+
       let form = event.target
       let email = this.entity.email.trim()
 
@@ -67,11 +76,35 @@ export default {
         return;
       }
 
+      let self = this
+
       axios.post('/message.json', { 'message': this.entity })
         .then( response => {
-          console.dir(response)
+
+          if (response.data.status && response.data.status == 'Ok') {
+
+            let div = document.createElement('div')
+            div.setAttribute('class', 'alert alert-success')
+            div.setAttribute('role', 'alert')
+
+            let txt = document.createTextNode("Thank you for your interest. I'll contact with you soon as possible!");
+            div.appendChild(txt);
+
+            form.parentNode.replaceChild(div, form)
+          }
+
         }).catch( err => {
-          console.dir(err)
+
+          if (err.response.data) {
+            let alertComponent = Vue.extend(Alert)
+            let instance = new alertComponent({
+              propsData: { messages: err.response.data.errors }
+            })
+            instance.$mount()
+            self.error_container = self.$el.insertBefore(instance.$el, self.$el.firstChild)
+
+          }
+
         })
 
     },

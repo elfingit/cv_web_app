@@ -5,7 +5,7 @@ class MessageController < ApplicationController
     if !@message.save
       render :json => { :errors => @message.errors.full_messages }, :status => 422
     else
-      render :json => { :status => 'Ok'}
+      render :json => { :status => 'Ok' }
     end
   end
 
