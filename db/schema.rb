@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_31_165116) do
+ActiveRecord::Schema.define(version: 2019_04_05_122708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,23 @@ ActiveRecord::Schema.define(version: 2019_03_31_165116) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_pages_on_slug", unique: true
+  end
+
+  create_table "portfolios", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "portfolios_technologies", id: false, force: :cascade do |t|
+    t.bigint "portfolio_id", null: false
+    t.bigint "technology_id", null: false
+    t.bigint "portfolios_id"
+    t.bigint "technologies_id"
+    t.index ["portfolios_id"], name: "index_portfolios_technologies_on_portfolios_id"
+    t.index ["technologies_id"], name: "index_portfolios_technologies_on_technologies_id"
   end
 
   create_table "socials", force: :cascade do |t|
