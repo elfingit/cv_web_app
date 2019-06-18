@@ -23,7 +23,11 @@
           <ul class="navbar-nav mr-auto">
             <% @menu.items do |menu_item| %>
             <li class="nav-item <%= 'active' if current_page?(menu_item.url) %>">
-              <a class="nav-link" href="<%= menu_item.url %>"><%= menu_item.label %></a>
+              <% if menu_item.turbolinks %>
+                <%= link_to menu_item.label, menu_item.url, class: "nav-link" %>
+              <% else %>
+                <%= link_to menu_item.label, menu_item.url, class: "nav-link", data: { turbolinks: false } %>
+              <% end %>  
             </li>
             <% end %>
           </ul>
