@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title><%= content_for?(:meta_title) ? yield(:meta_title) : "Remote software developer" %> | Andrei Siearheyeu </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="<%= content_for?(:meta_title) ? yield(:meta_title) : "Remote software developer" %> | Andrei Siearheyeu">
+    <meta name="description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : "Remote software developer PHP, Laravel, Vue.js started at $20 per hour." %>">
+    <link rel="icon" href="<%= image_url('favicon.ico') %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
