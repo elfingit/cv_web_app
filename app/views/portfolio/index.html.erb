@@ -1,0 +1,34 @@
+<% content_for(:meta_title) { 'Portfolio' } %>
+<% content_for(:meta_description) { 'My portfolio with some latest projects' } %>
+<h1>Portfolio</h1>
+<div class="row">
+  <% @portfolio_items.each do | item | %>
+  <div class="col-xl-4 col-lg-4 col-md-3 col-sm-6 col-12">
+    <div class="card">
+      <%= image_tag item.preview.variant(resize: "468x200"), alt: item.title %>
+      <div class="card-body">
+        <div class="card-title">
+        <% if item.url %>
+          <h4><a href="<%= item.url %>" target="_blank" rel="nofollow"><%= item.title %></a></h4>
+        <% else %>
+          <h4><%= item.title %></h4>
+        <% end %>  
+        </div>
+
+        <div class="card-text">
+          <p><%= item.description %></p>
+          <div class="portfolio-item-tech-block">
+            <ul>
+            <% item.technologies.each do | technology | %>
+            <li>
+              <span class="title"><%= technology.title %></span>
+            </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

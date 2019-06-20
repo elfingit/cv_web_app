@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   get 'page/:id', to: 'pages#show', as: 'show_page'
   post 'message', to: 'message#create'
+  get 'portfolio', to: 'portfolio#index', as: 'portfolio_index'
 
 end

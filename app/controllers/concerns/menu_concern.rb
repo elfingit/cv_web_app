@@ -14,10 +14,14 @@ module CvMenu
         if item['link'].start_with? ':'
           method_name = item['link'].slice 1 .. item['link'].length
           params = method_name.split(' ')
+          if params.length == 1
+          url = @@controller.send(params[0])
+          else
           url = @@controller.send(params[0], params[1])
-          yield MenuItem.new item['label'], url
+          end
+          yield MenuItem.new item['label'], url, item['turbolinks']
         else
-          yield MenuItem.new item['label'], item['link']
+          yield MenuItem.new item['label'], item['link'], item['turbolinks']
         end
       end
     end
@@ -25,9 +29,10 @@ module CvMenu
   end
 
   class MenuItem
-    def initialize(label, url)
+    def initialize(label, url, turbolinks=true)
       @@label = label
       @@url = url
+      @@turbolinks = turbolinks
     end
 
     def label
@@ -36,6 +41,10 @@ module CvMenu
 
     def url
       @@url
+    end
+    
+    def turbolinks
+      @@turbolinks
     end
 
   end

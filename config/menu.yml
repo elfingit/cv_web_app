@@ -2,7 +2,7 @@ menu:
   items:
     - {
       "label": "Portfolio",
-      "link": "#"
+      "link": ":portfolio_index_path"
     }
     - {
       "label": "About Me",
@@ -10,5 +10,6 @@ menu:
     }
     - {
       "label": "Contact Me",
-      "link": ":show_page_path contact-me"
+      "link": ":show_page_path contact-me",
+      "turbolinks": false
     }

@@ -68,3 +68,4 @@ gem 'rails_admin', '~> 1.3'
 gem 'friendly_id', '~> 5.2.4'
 gem 'ckeditor'
 gem 'webpacker', '~> 4.x'
+gem "mini_magick"
