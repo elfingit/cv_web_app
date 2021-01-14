@@ -64,7 +64,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'devise'
-gem 'rails_admin', '~> 1.3'
+gem 'rails_admin', '~> 1.4'
 gem 'friendly_id', '~> 5.2.4'
 gem 'ckeditor'
 gem 'webpacker', '~> 4.x'
